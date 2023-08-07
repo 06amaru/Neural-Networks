@@ -33,8 +33,6 @@ class Layer_Dense:
 layer1 = Layer_Dense(784, 10)
 layer1.forward(imgs)
 
-#print(layer1.output[:5])
-
 class Activation_ReLu:
     def forward(self, inputs):
         self.output = np.maximum(0, inputs)
