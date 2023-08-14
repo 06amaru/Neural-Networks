@@ -1,0 +1,36 @@
+Input: Training data (X, Y), Neural network architecture (input_size, hidden_size, output_size),
+       Activation functions (sigmoid, sigmoid_derivative), Learning rate, Number of epochs
+
+Output: Trained neural network weights and biases
+
+Initialize random weights and biases for hidden and output layers
+
+Repeat for each epoch:
+    For each training example (X_i, Y_i):
+        // Forward Propagation
+        Compute hidden layer input: Z_hidden = W_hidden * X_i + b_hidden
+        Compute hidden layer activation: A_hidden = sigmoid(Z_hidden)
+        Compute output layer input: Z_output = W_output * A_hidden + b_output
+        Compute predicted output: A_output = sigmoid(Z_output)
+
+        // Compute Loss
+        Compute loss: L = 0.5 * (A_output - Y_i)^2
+
+        // Backpropagation
+        Compute delta for output layer: delta_output = (A_output - Y_i) * sigmoid_derivative(Z_output)
+        Compute delta for hidden layer: delta_hidden = (W_output^T * delta_output) * sigmoid_derivative(Z_hidden)
+
+        // Update weights and biases
+        Update weights and biases of output layer:
+        W_output -= learning_rate * (delta_output * A_hidden^T)
+        b_output -= learning_rate * delta_output
+
+        Update weights and biases of hidden layer:
+        W_hidden -= learning_rate * (delta_hidden * X_i^T)
+        b_hidden -= learning_rate * delta_hidden
+
+    End For
+
+End Repeat
+
+Return trained weights and biases
