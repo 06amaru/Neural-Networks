@@ -149,7 +149,7 @@ def train(model, train_loader, val_loader, Epochs, loss_fn):
             predicted_high_res = model(low_res)
             loss = loss_fn(predicted_high_res, high_res)
             optimizer.zero_grad()
-            loss.backward()
+            loss.backward(,,
             optimizer.step()
           
             train_loss_avg[-1] += loss.item()
