@@ -22,6 +22,7 @@ class Layer:
 
     def backward(self, dz_next, w_next):
         if w_next is None:
+            # apply when it is output layer
             self.dz = dz_next
         else:
             self.dz = (dz_next @ w_next.T) * self.activation_prime(self.z)
